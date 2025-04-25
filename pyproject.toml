@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "twitterapi-mcp"
+version = "0.1.0"
+description = "TwitterAPI.io MCP Server for AI assistant access to Twitter data"
+readme = "README.md"
+authors = [
+    {name = "DevRico003", email = "devrico003@gmail.com"}
+]
+license = "MIT"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers", 
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP",
+]
+keywords = ["twitter", "api", "mcp", "llm", "ai", "assistant"]
+dependencies = [
+    "httpx>=0.23.0",
+    "mcp>=0.4.0",
+    "python-dotenv>=1.0.0",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+"Homepage" = "https://github.com/DevRico003/twitterapi.io-mcp"
+"Bug Tracker" = "https://github.com/DevRico003/twitterapi.io-mcp/issues"
+"Source Code" = "https://github.com/DevRico003/twitterapi.io-mcp"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.20.0",
+]
+
+[project.scripts]
+twitterapi-mcp = "twitterapi_server:main"
+
+[tool.setuptools]
+packages = ["twitterapi", "twitterapi.prompts", "twitterapi.resources", "twitterapi.tools"]
+
+[tool.setuptools.package-data]
+twitterapi = ["**/*.py"]
+
+[tool.setuptools.exclude-package-data]
+"*" = ["*.pyc", "__pycache__"]
