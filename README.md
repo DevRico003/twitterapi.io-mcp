@@ -4,7 +4,7 @@
 ![Python Version](https://img.shields.io/badge/python-3.8%2B-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A Model Context Protocol (MCP) server that provides LLM applications with access to Twitter data through the TwitterAPI.io service. This server enables AI assistants like Claude to retrieve and analyze tweets, user profiles, and other Twitter data in a structured way, with special enhancements for AI development trend analysis.
+A Model Context Protocol (MCP) server that provides LLM applications with access to Twitter data through the TwitterAPI.io service. This server enables AI assistants like Claude to retrieve and analyze tweets, user profiles, and other Twitter data in a structured way.
 
 ## 🚀 Features
 
@@ -19,15 +19,6 @@ A Model Context Protocol (MCP) server that provides LLM applications with access
 
 ### Tools
 - Basic Twitter operations (get tweet, get user profile, search tweets)
-- AI-specific analysis tools for monitoring influencers and trends
-- Advanced search capabilities for AI development topics
-
-### AI Development Capabilities
-- Monitor 23 pre-configured AI influencers
-- Analyze engagement metrics and trending topics
-- Research specific AI development topics
-- Generate content ideas based on trends
-
 ## 📋 Requirements
 
 - Python 3.8 or higher
@@ -85,22 +76,23 @@ MAX_TWEETS=100
 
 Run directly with Python:
 ```bash
-python twitterapi_server.py
+# Run the server package as a module
+python -m twitterapi_server
 ```
 
 Or use the MCP development mode:
 ```bash
-mcp dev twitterapi_server.py
+mcp dev twitterapi_server
 ```
 
 ### Install in Claude Desktop
 
 ```bash
 # If you have the package installed:
-mcp install -m twitterapi-mcp --name "Twitter AI Analysis"
+mcp install -m twitterapi-mcp --name "Twitter API"
 
 # Or directly from the code:
-mcp install twitterapi_server.py --name "Twitter AI Analysis"
+mcp install twitterapi_server --name "Twitter API"
 ```
 
 ## ⚙️ Configuration
@@ -108,36 +100,69 @@ mcp install twitterapi_server.py --name "Twitter AI Analysis"
 The server supports the following environment variables:
 - `TWITTER_API_KEY` (required): Your TwitterAPI.io API key
 - `LOG_LEVEL` (optional): Logging level (default: INFO)
-- `CACHE_TTL` (optional): Cache timeout in seconds (default: 3600/1 hour) 
+- `CACHE_TTL` (optional): Cache timeout in seconds (default: 3600/1 hour)
 - `MAX_TWEETS` (optional): Maximum tweets per request (default: 100)
 
 ## 📁 Project Structure
 
 ```
-twitterapi/
-  __init__.py            # Package exports
-  api_client.py          # TwitterAPI client
-  config.py              # Configuration and constants
-  mcp_server.py          # MCP server setup
-  utils.py               # Utility functions
-  resources/             # Resource implementations
-    __init__.py
-    tweet_resources.py
-    user_resources.py
-  tools/                 # Tool implementations
-    __init__.py
-    basic_tools.py
-    ai_tools.py
-  prompts/               # Prompt templates
-    __init__.py
-    ai_prompts.py
-twitterapi_server.py     # Main entry point
+.
+├── .gitignore
+├── LICENSE
+├── MANIFEST.in
+├── README.md              # This file
+├── pyproject.toml         # Project configuration and dependencies
+├── requirements.txt       # Dependencies (alternative format)
+├── setup.py               # Build script (legacy compatibility)
+├── twitterapi/            # Main package source code
+│   ├── __init__.py
+│   ├── api_client.py
+│   ├── config.py
+│   ├── mcp_server.py
+│   ├── utils.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   ├── tweet_resources.py
+│   │   └── user_resources.py
+│   └── tools/
+│       ├── __init__.py
+│       └── basic_tools.py
+└── twitterapi_server/     # Server entry point package
+    └── __init__.py        # Contains main() function
 ```
 
 ## 🧪 Testing
 
 Run the tests with pytest:
 ```bash
+## 📦 Publishing to PyPI (Developer Notes)
+
+To publish a new version of this package to PyPI:
+
+1.  **Increment Version:** Update the `version` number in `pyproject.toml`.
+2.  **Install Tools:** Make sure you have the necessary tools installed:
+    ```bash
+    pip install --upgrade build twine
+    ```
+3.  **Configure Credentials:** Ensure you have a `.pypirc` file in your home directory (`~/.pypirc`) configured with your PyPI API token or username/password. Example:
+    ```ini
+    [pypi]
+      username = __token__
+      password = pypi-your-api-token-here
+    ```
+4.  **Build the Package:** Generate the distribution archives:
+    ```bash
+    python -m build
+    ```
+    This will create `sdist` (.tar.gz) and `wheel` (.whl) files in the `dist/` directory.
+5.  **Upload to PyPI:** Upload the generated files using twine:
+    ```bash
+    # Replace X.Y.Z with the new version number
+    python -m twine upload dist/twitterapi_mcp-X.Y.Z*
+
+    # Or upload all files in dist/ (be careful if old versions exist)
+    # python -m twine upload dist/*
+    ```
 python -m pytest
 ```
 

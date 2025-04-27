@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "twitterapi-mcp"
-version = "0.1.1"
+version = "0.1.3"
 description = "TwitterAPI.io MCP Server for AI assistant access to Twitter data"
 readme = "README.md"
 authors = [
@@ -13,7 +13,7 @@ authors = [
 license = "MIT"
 classifiers = [
     "Development Status :: 4 - Beta",
-    "Intended Audience :: Developers", 
+    "Intended Audience :: Developers",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
@@ -46,7 +46,7 @@ dev = [
 twitterapi-mcp = "twitterapi_server:main"
 
 [tool.setuptools]
-packages = ["twitterapi", "twitterapi.prompts", "twitterapi.resources", "twitterapi.tools", "twitterapi_server"]
+packages = ["twitterapi", "twitterapi.resources", "twitterapi.tools", "twitterapi_server"]
 
 [tool.setuptools.package-data]
 twitterapi = ["**/*.py"]

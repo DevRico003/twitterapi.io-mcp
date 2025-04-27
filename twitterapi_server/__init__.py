@@ -7,7 +7,6 @@ This module serves as the entry point for the TwitterAPI.io MCP server.
 from twitterapi import mcp
 import twitterapi.resources
 import twitterapi.tools
-import twitterapi.prompts
 
 def main():
     """Run the TwitterAPI.io MCP server."""

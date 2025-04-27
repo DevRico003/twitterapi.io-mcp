@@ -26,15 +26,15 @@ logger = logging.getLogger("twitterapi-mcp")
 def get_env_var(name: str, default: Optional[str] = None, required: bool = False) -> Optional[str]:
     """
     Get an environment variable with validation.
-    
+
     Args:
         name: Name of the environment variable
         default: Default value if environment variable is not set
         required: Whether the environment variable is required
-        
+
     Returns:
         The environment variable value or default
-        
+
     Raises:
         ValueError: If the environment variable is required but not set
     """
@@ -55,36 +55,8 @@ MAX_TWEETS = int(get_env_var("MAX_TWEETS", "100"))
 log_level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)
 logger.setLevel(log_level)
 
-# AI coding influencers to monitor by default
-DEFAULT_AI_INFLUENCERS: List[str] = [
-    "AndrewYNg",       # Andrew Ng
-    "karpathy",        # Andrej Karpathy
-    "sama",            # Sam Altman
-    "AnthropicAI",     # Anthropic
-    "OpenAI",          # OpenAI
-    "GeminiApp",       # Google Gemini
-    "GosuCoder",       # GosuCoder
-    "_philschmid",     # Philipp Schmid
-    "cjzafir",         # Chris Zafir
-    "ryolu_",          # Ryan Lu
-    "ericzakariasson", # Eric Zakariasson
-    "jasonzhou1993",   # Jason Zhou
-    "MatthewBerman",   # Matthew Berman
-    "roo_code",        # Roo Code
-    "cline",           # Cline
-    "aisdk",           # AI SDK
-    "windsurf_ai",     # Windsurf AI
-    "dr_cintas",       # Dr. Cintas
-    "PrajwalTomar_",   # Prajwal Tomar
-    "Saboo_Shubham_",  # Shubham Saboo
-    "cursor_ai",       # Cursor AI
-    "rowancheung",     # Rowan Cheung
-    "shivsakhuja"      # Shiv Sakhuja
-]
+# Default influencers list removed for neutrality.
+# Users should provide specific influencers via tool arguments if needed.
 
-# Topic extraction keywords
-AI_TOPICS: List[str] = [
-    "ai", "ml", "python", "coding", "llm", "development", 
-    "tensorflow", "pytorch", "langchain", "whisper", "gpt",
-    "transformer", "vector", "embedding", "inference", "fine-tuning"
-]
+# AI-specific topic keywords removed for neutrality.
+# Topic analysis should be driven by user input if needed.
