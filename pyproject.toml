@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "twitterapi-mcp"
-version = "0.1.3"
+version = "0.1.4"
 description = "TwitterAPI.io MCP Server for AI assistant access to Twitter data"
 readme = "README.md"
 authors = [

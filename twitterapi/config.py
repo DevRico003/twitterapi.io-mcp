@@ -54,9 +54,3 @@ MAX_TWEETS = int(get_env_var("MAX_TWEETS", "100"))
 # Set log level from environment
 log_level = getattr(logging, LOG_LEVEL.upper(), logging.INFO)
 logger.setLevel(log_level)
-
-# Default influencers list removed for neutrality.
-# Users should provide specific influencers via tool arguments if needed.
-
-# AI-specific topic keywords removed for neutrality.
-# Topic analysis should be driven by user input if needed.
