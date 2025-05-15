@@ -17,4 +17,4 @@ RUN uv pip install --system -e .
 EXPOSE ${PORT}
 
 # Command to run the MCP server
-CMD ["uv", "run", "src/twitterapi_mcp.py"]
+CMD ["uv", "run", "src/main.py"]
