@@ -1,0 +1,64 @@
+"""
+Utility functions for the Twitter API MCP server.
+"""
+from typing import Dict, Any
+import os
+
+def format_tweet(tweet: Dict[str, Any]) -> str:
+    """
+    Format a tweet for output.
+    
+    Args:
+        tweet: Tweet data dictionary
+        
+    Returns:
+        Formatted tweet as a string
+    """
+    if not tweet:
+        return "Tweet not available"
+        
+    author = tweet.get("author", {})
+    
+    formatted = f"Tweet by @{author.get('userName', 'unknown')} ({author.get('name', 'Unknown')}):\n\n"
+    formatted += f"{tweet.get('text', 'No content')}\n\n"
+    formatted += f"Posted at: {tweet.get('createdAt', 'unknown')}\n"
+    formatted += f"Likes: {tweet.get('likeCount', 0)} | "
+    formatted += f"Retweets: {tweet.get('retweetCount', 0)} | "
+    formatted += f"Replies: {tweet.get('replyCount', 0)}"
+    
+    # Add hashtags if present
+    if tweet.get("entities", {}).get("hashtags"):
+        hashtags = [f"#{tag['text']}" for tag in tweet["entities"]["hashtags"]]
+        formatted += f"\nHashtags: {' '.join(hashtags)}"
+    
+    return formatted
+
+def format_user(user: Dict[str, Any]) -> str:
+    """
+    Format a user profile for output.
+    
+    Args:
+        user: User data dictionary
+        
+    Returns:
+        Formatted user profile as a string
+    """
+    if not user:
+        return "User not available"
+        
+    formatted = f"Twitter Profile: @{user.get('userName', 'unknown')} ({user.get('name', 'Unknown')})\n\n"
+    
+    if user.get("description"):
+        formatted += f"Bio: {user['description']}\n\n"
+    
+    if user.get("location"):
+        formatted += f"Location: {user['location']}\n"
+    
+    formatted += f"Followers: {user.get('followers', 0)} | Following: {user.get('following', 0)}\n"
+    formatted += f"Tweets: {user.get('statusesCount', 0)} | Media: {user.get('mediaCount', 0)}\n"
+    formatted += f"Account created: {user.get('createdAt', 'unknown')}\n"
+    
+    if user.get("isBlueVerified"):
+        formatted += f"✓ Blue Verified\n"
+    
+    return formatted

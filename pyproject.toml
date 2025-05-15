@@ -1,0 +1,11 @@
+[project]
+name = "twitterapi-mcp"
+version = "0.1.4"
+description = "TwitterAPI.io MCP Server for AI assistant access to Twitter data"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "httpx>=0.23.0",
+    "mcp>=1.7.1",
+    "python-dotenv>=1.0.0"
+]
