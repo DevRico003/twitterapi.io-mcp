@@ -28,7 +28,7 @@ The server provides six essential Twitter data access tools:
 
 ## Prerequisites
 - Docker/Docker Desktop if running the MCP server as a container (recommended)
-- Python 3.8+ if running the MCP server directly
+- Python 3.10+ if running the MCP server directly
 - TwitterAPI.io API key
 
 ## Installation
